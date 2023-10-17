@@ -2,7 +2,7 @@ let container = document.querySelector('.container');
 let gridButton = document.getElementById('submit-grid');
 let clearGridButton = document.getElementById('clear-grid');
 let gridWidth = document.getElementById('width-range');
-let girdHeight = document.getElementById('height-range');
+let gridHeight = document.getElementById('height-range');
 let colorButton = document.getElementById('color-input');
 let eraseBtn = document.getElementById('erase-btn');
 let paintBtn = document.getElementById('paint-btn');
@@ -17,9 +17,9 @@ let events = {
     },
 
     touch:{
-        down: 'touchdown',
+        down: 'touchstart',
         move: 'touchmove',
-        up: 'touchup'
+        up: 'touchend',
     }
 };
 
@@ -44,14 +44,14 @@ isTouchDevice();
 gridButton.addEventListener('click', ()=>{
     container.innerHTML = '';
     let count = 0;
-    for (let i = 0; i < girdHeight.value; i++) {
+    for (let i = 0; i < gridHeight.value; i++) {
         count += 2;
-        let div = document.createEvent('div');
+        let div = document.createElement('div');
         div.classList.add('gridRow');
 
         for (let j = 0; j < gridWidth.value; j++) {
             count += 2;
-            let col = document.createEvent('div');
+            let col = document.createElement('div');
             col.classList.add('gridCol');
             col.setAttribute('id', `gridCol${count}`);
             col.addEventListener(events[deviceType].down, ()=>{
@@ -67,7 +67,7 @@ gridButton.addEventListener('click', ()=>{
                 let elementId = document.elementFromPoint(
                     !isTouchDevice() ? e.clientX : e.touches[0].clientX,
                     !isTouchDevice() ? e.clientY : e.touches[0].clientY,
-                ), id ;
+                ).id ;
                 checker(elementId);
             });
 
