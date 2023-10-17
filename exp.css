@@ -36,25 +36,32 @@ span {
 
 button {
     background-color: #43a047;
+    /* buttonタグの四方のborderを消している */
     border: none;
     border-radius: 5px;
     padding: 5px;
     color: #fff;
 }
 
+/* 複数あるinputとタグのなかで、typeが'color'のもだけを設定している */
 input[type='color'] {
+    /* 以下三つは標準のプロパティを無効化している */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    /* 以下でプロパティを再設定している */
     background-color: transparent;
     width: 70px;
     height: 40px;
     border: none;
+    /* カーソルを置くと指の形に変化する */
     cursor: pointer;
 }
 
+/* Webkitベースのブラウザの表示される色のサンプル部分を設定している */
 input[type='color'] ::-webkit-color-swatch {
     border-radius: 8px;
+    /* サンプルの周りに4pxの黒の境界線を設定している */
     border: 4px solid #000;
 }
 
@@ -77,6 +84,5 @@ input[type='color'] ::-moz-color-swatch {
     .gridCol {
         height: 0.8em;
         width: 0.8em;
-        
     }
 }
